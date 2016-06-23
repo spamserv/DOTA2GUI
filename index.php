@@ -38,20 +38,17 @@ $(document).ready(function() {
 	$("#given_chars").val("");
 });
 
-$(document).keypress(function(e) {
-
+$(document).keydown(function(e) {
+	console.log(e.keyCode);
 	if(e.keyCode == 8) {
 		$("#given_chars").val($("#given_chars").val().slice(0,-1));
+		return false
 	}
 
-	if(e.keyCode == 0) {
-		if(e.charCode != 32)
-			$("#given_chars").val($("#given_chars").val()+e.key);
-	}
+	if(e.charCode != 32)
+		$("#given_chars").val($("#given_chars").val()+e.key);
 
-	if(e.keyCode == 8 || e.keyCode == 0) {
-		updatePictures();
-	}
+	updatePictures();
 
 });
 
