@@ -25,6 +25,10 @@ foreach($heroes as $hero)
 
 ?>
 
+<div id="hero_container">
+	
+</div>
+
 <script type="text/javascript" src="static/js/jquery.min.js"></script>
 <script type="text/javascript" src="static/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="static/js/index.js"></script>

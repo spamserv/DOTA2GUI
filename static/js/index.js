@@ -1,5 +1,31 @@
 $(document).ready(function() {
+	var selected_heroes = [];
+
 	$("#given_chars").val("");
+
+	$(".hero_pic").click(function() {
+
+		if(!$(this).hasClass("negative")) {
+			var selected_id = $(this).attr("data-id");
+			var selected_src = $(this).attr("src");
+
+			if(selected_heroes.indexOf(selected_id) == -1 && selected_heroes.length < 10) {
+				selected_heroes.push(selected_id);
+				add_hero(selected_id, selected_src);
+			}
+		}
+	
+	});
+
+	$("body").delegate(".removeable", "click", function() {
+
+		var hero_id = $(this).attr("data-id");
+		var index = selected_heroes.indexOf(hero_id);
+		if (index > -1)
+		    selected_heroes.splice(index, 1);
+
+		$(".removeable[data-id='"+hero_id+"']").remove();
+	});
 });
 
 $(document).keydown(function(e) {
@@ -14,8 +40,6 @@ $(document).keydown(function(e) {
 		$("#given_chars").val($("#given_chars").val()+e.key.toLowerCase());
 		updatePictures();
 	}
-
-	console.log(e.keyCode);
 
 });
 
@@ -38,4 +62,8 @@ function updatePictures() {
 			$(this).removeClass("negative");
 		}
 	});
+}
+
+function add_hero(hero_id, pic_src) {
+	$("#hero_container").append("<img class='removeable' src='"+pic_src+"' data-id='"+hero_id+"'/>");
 }
