@@ -1,10 +1,27 @@
+.hero_pic {
+	height: 75px; 
+	width: 75px; 
+	cursor: pointer;
+}
+
 .positive {
-	border: 5px solid red;
+	border: 2px solid red;
+}
+
+.hero_pic:hover {
+	height: 90px;
+	width: 90px;
 }
 
 .negative {
-	width: 90px;
-	height: 90px;
+	cursor: not-allowed;
+	width: 65px;
+	height: 65px;
 	-webkit-filter: grayscale(100%); /* Chrome, Safari, Opera */
 	filter: grayscale(100%);
 }
+
+.negative:hover {
+	width: 65px;
+	height: 65px;
+} 

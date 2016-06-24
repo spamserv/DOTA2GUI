@@ -9,21 +9,28 @@
 
 	<link rel="stylesheet" type="text/css" href="static/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="static/css/index.css">
+
 </head>
 <body>
 
 <input type="text" id="given_chars" disabled="">
+
 <br>
-<img src="static/img/a.png" data-name="aa" height="100" width="100" class="hero_pic">
-<img src="static/img/a.png" data-name="aab" height="100" width="100" class="hero_pic">
-<img src="static/img/a.png" data-name="ab" height="100" width="100" class="hero_pic">
-<img src="static/img/a.png" data-name="bb" height="100" width="100" class="hero_pic">
-<img src="static/img/a.png" data-name="bba" height="100" width="100" class="hero_pic">
-<img src="static/img/a.png" data-name="ba" height="100" width="100" class="hero_pic">
 
 <button type="button" class="btn btn-default" id="btn-predict">Default</button>
 
+<?php 
+$heroes = json_decode(file_get_contents("static/data/heroes.json"));
+foreach($heroes as $hero)
+{
+    echo '<img src="static/img/heroes/'.$hero->name.'_lg.png" data-name="'.strtolower($hero->localized_name).'" data-id="'.$hero->id.'" class="hero_pic">';
+}  
 
+?>
+
+<div id="hero_container">
+	
+</div>
 
 <script type="text/javascript" src="static/js/jquery.min.js"></script>
 <script type="text/javascript" src="static/js/bootstrap.min.js"></script>
