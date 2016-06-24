@@ -13,7 +13,7 @@
 	<style type="text/css">
 
 	#given_chars {
-		position: absolute;
+		position: fixed;
 		z-index: 1;
 		right: 0;
 		margin: 20px;
