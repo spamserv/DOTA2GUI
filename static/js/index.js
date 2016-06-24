@@ -10,10 +10,12 @@ $(document).keydown(function(e) {
 		return false;
 	}
 
-	if(e.charCode != 32)
+	if((e.keyCode >= 60 && e.keyCode <= 90) || e.keyCode == 0) {
 		$("#given_chars").val($("#given_chars").val()+e.key);
+		updatePictures();
+	}
 
-	updatePictures();
+	console.log(e.keyCode);
 
 });
 
@@ -24,7 +26,6 @@ function updatePictures() {
 	$(".hero_pic").each(function() {
 		if(value_length > 0) {
 			hero_name = $(this).attr("data-name");
-			console.log("Value : "+value+" = "+hero_name.substring(0, value_length));
 			if(value == hero_name.substring(0, value_length)) {
 				$(this).removeClass("negative");
 				$(this).addClass("positive");
