@@ -11,7 +11,7 @@ $(document).keydown(function(e) {
 	}
 
 	if((e.keyCode >= 60 && e.keyCode <= 90) || e.keyCode == 0) {
-		$("#given_chars").val($("#given_chars").val()+e.key);
+		$("#given_chars").val($("#given_chars").val()+e.key.toLowerCase());
 		updatePictures();
 	}
 

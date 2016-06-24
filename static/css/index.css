@@ -8,6 +8,11 @@
 	border: 2px solid red;
 }
 
+.hero_pic:hover {
+	height: 90px;
+	width: 90px;
+}
+
 .negative {
 	cursor: not-allowed;
 	width: 65px;
@@ -15,3 +20,8 @@
 	-webkit-filter: grayscale(100%); /* Chrome, Safari, Opera */
 	filter: grayscale(100%);
 }
+
+.negative:hover {
+	width: 65px;
+	height: 65px;
+} 
