@@ -10,27 +10,73 @@
 	<link rel="stylesheet" type="text/css" href="static/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="static/css/index.css">
 
+	<style type="text/css">
+
+	#given_chars {
+		position: absolute;
+		z-index: 1;
+		right: 0;
+		margin: 20px;
+		height: 40px;
+		width: 200px;
+		background-color: whitesmoke;
+		margin-top: 15px;
+		border: solid 3px #b8b8b8;
+		font-size: 20px;
+		padding: 5px;
+	}
+
+	#title {
+	    height: 55px;
+	    margin-bottom: 25px;
+	    margin-left: -15px;
+	    margin-right: -15px;
+	    text-align: center;
+	    font-size: 30px;
+	    padding-top: 20px;
+	    padding-bottom: 85px;
+	  }
+	</style>
+
 </head>
 <body>
 
-<input type="text" id="given_chars" disabled="">
 
-<br>
+<input type="text" id="given_chars" disabled hidden>
 
-<button type="button" class="btn btn-default" id="btn-predict">Default</button>
 
-<?php 
-$heroes = json_decode(file_get_contents("static/data/heroes.json"));
-foreach($heroes as $hero)
-{
-    echo '<img src="static/img/heroes/'.$hero->name.'_lg.png" data-name="'.strtolower($hero->localized_name).'" data-id="'.$hero->id.'" class="hero_pic">';
-}  
+<div class="container">
 
-?>
+	<div id="title">
+     	DOTA PREDICTIONER
+    </div>
 
-<div id="hero_container">
+	<div class="row" style="text-align: center;">
+		<div class="col-md-1"></div>
+		<div class="col-md-10">
+			<?php 
+				$heroes = json_decode(file_get_contents("static/data/heroes.json"));
+				foreach($heroes as $hero)
+				{
+				    echo '<img src="static/img/heroes/'.$hero->name.'_lg.png" data-name="'.strtolower($hero->localized_name).'" data-id="'.$hero->id.'" class="hero_pic">';
+				}  
+
+			?>
+		</div>
+		<div class="col-md-1"></div>
+	</div>
+
+	
+
+	<div id="hero_container">
+		
+	</div>
+
+	<button type="button" class="btn btn-default" id="btn-predict">Default</button>
 	
 </div>
+
+
 
 <script type="text/javascript" src="static/js/jquery.min.js"></script>
 <script type="text/javascript" src="static/js/bootstrap.min.js"></script>

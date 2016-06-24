@@ -49,15 +49,22 @@ $(document).keydown(function(e) {
 
 	if(e.keyCode == 8) {
 		$("#given_chars").val($("#given_chars").val().slice(0,-1));
-		updatePictures();
-		return false;
 	}
 
 	if((e.keyCode >= 60 && e.keyCode <= 90) || e.keyCode == 0) {
 		$("#given_chars").val($("#given_chars").val()+e.key.toLowerCase());
-		updatePictures();
 	}
 
+	if($("#given_chars").val() != "") {
+		$("#given_chars").show();
+	} else {
+		$("#given_chars").hide();
+	}
+
+	updatePictures();
+	if(e.keyCode == 8) {
+		return false;
+	}
 });
 
 function updatePictures() {
