@@ -23,19 +23,21 @@ $(document).ready(function() {
 		var index = selected_heroes.indexOf(hero_id);
 		if (index > -1)
 		    selected_heroes.splice(index, 1);
-
 		$(".removeable[data-id='"+hero_id+"']").remove();
 	});
 
 	$("#btn-predict").on("click", function(){
+		
+		var heroes = [];
 		if(selected_heroes.length == 10) {
-		var heroes = selected_heroes;
-		heroes.push("true");
+			var heroes = selected_heroes.slice();
+				heroes.push("true");
 			$.ajax({
 				url: "https://dota-ruap.herokuapp.com/predict", 
 				type: "POST",
 				data: JSON.stringify(heroes),
 				success: function(result){
+					console.log(result);
 		    	}
 			});
 		}
