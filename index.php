@@ -18,18 +18,29 @@
 			-webkit-filter: grayscale(100%); /* Chrome, Safari, Opera */
     		filter: grayscale(100%);
 		}
+
+		.hero_pic {
+			height: 75px; 
+			width: 75px; 
+		}
 	</style>
 </head>
 <body>
 
 <input type="text" id="given_chars" disabled="">
+
 <br>
-<img src="static/img/a.png" data-name="aa" height="100" width="100" class="hero_pic">
-<img src="static/img/a.png" data-name="aab" height="100" width="100" class="hero_pic">
-<img src="static/img/a.png" data-name="ab" height="100" width="100" class="hero_pic">
-<img src="static/img/a.png" data-name="bb" height="100" width="100" class="hero_pic">
-<img src="static/img/a.png" data-name="bba" height="100" width="100" class="hero_pic">
-<img src="static/img/a.png" data-name="ba" height="100" width="100" class="hero_pic">
+
+<?php 
+$heroes = json_decode(file_get_contents("static/data/heroes.json"));
+foreach($heroes as $hero)
+{
+    echo '<img src="static/img/heroes/'.$hero->name.'_lg.png" data-name="'.strtolower($hero->localized_name).'" data-id="'.$hero->id.'" class="hero_pic">';
+}  
+
+?>
+
+<br>
 
 <script type="text/javascript" src="static/js/jquery.min.js"></script>
 <script type="text/javascript">
@@ -42,6 +53,7 @@ $(document).keydown(function(e) {
 	console.log(e.keyCode);
 	if(e.keyCode == 8) {
 		$("#given_chars").val($("#given_chars").val().slice(0,-1));
+		updatePictures();
 		return false
 	}
 
