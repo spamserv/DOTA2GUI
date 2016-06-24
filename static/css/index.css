@@ -24,3 +24,8 @@
 	width: 65px;
 	height: 65px;
 } 
+
+body {
+	background-image: url('../img/old-wall-pattern.png');
+	background-repeat: repeat;
+}
