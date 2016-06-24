@@ -89,5 +89,5 @@ function updatePictures() {
 }
 
 function add_hero(hero_id, pic_src) {
-	$(".selected_hero_container").append("<img class='removable' src='"+pic_src+"' data-id='"+hero_id+"'/>");
+	$(".selected_hero_container").append("<div class='hero_select'><img class='removable' src='"+pic_src+"' data-id='"+hero_id+"'/><div class='hero_name'><p class='hero_name_text'>Keeper of the light</p></div></div>");
 }
