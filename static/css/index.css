@@ -1,17 +1,22 @@
+.default {
+	margin: 0;
+	padding: 0;
+}
+
+#hero_holder {
+	display: inline; 
+}
+
 .hero_pic {
 	height: 75px; 
 	width: 75px; 
 	cursor: pointer;
 	padding: 1px;
+	border: 2px solid #575757;
 }
 
 .positive {
-	border: 2px solid red;
-}
-
-.hero_pic:hover {
-	height: 90px;
-	width: 90px;
+	border: 2px solid #47D1FF;
 }
 
 .negative {
@@ -21,9 +26,49 @@
 }
 
 .negative:hover {
-	width: 65px;
-	height: 65px;
+	height: 75px; 
+	width: 75px; 
 } 
+
+.hero_placeholder {
+	height: 75px; 
+	width: 75px;
+	display: none;
+}
+
+.hero_container {
+	height: 75px; 
+	width: 75px;
+	float:left;
+	margin:2px;
+}
+
+.hero_container:hover > .hero_placeholder { 
+	display:inline;
+}
+
+.hero_container:hover > .hero_pic { 
+	height: 105px;
+	width: 105px;
+	border: 2px solid #47D1FF;
+	z-index: 1;
+	position: absolute;
+
+	-ms-transform: translate(-15px, -15px); /* IE 9 */
+   	-webkit-transform: translate(-15px, -15px); /* Safari */
+    transform: translate(-15px, -15px);
+
+	-webkit-box-shadow: 0px 0px 30px 1px #47D1FF;
+	-moz-box-shadow:    0px 0px 30px 1px #47D1FF;
+	box-shadow:         0px 0px 30px 1px #47D1FF;
+}
+
+.removable {
+	border: 2px solid #575757;
+	margin: 2px;
+	height: 92px; 
+	width: 173px;
+}
 
 body {
 	background-image: url('../img/old-wall-pattern.png');

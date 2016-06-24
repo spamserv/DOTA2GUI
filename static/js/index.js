@@ -17,13 +17,13 @@ $(document).ready(function() {
 	
 	});
 
-	$("body").delegate(".removeable", "click", function() {
+	$("body").delegate(".removable", "click", function() {
 
 		var hero_id = $(this).attr("data-id");
 		var index = selected_heroes.indexOf(hero_id);
 		if (index > -1)
 		    selected_heroes.splice(index, 1);
-		$(".removeable[data-id='"+hero_id+"']").remove();
+		$(".removable[data-id='"+hero_id+"']").remove();
 	});
 
 	$("#btn-predict").on("click", function(){
@@ -89,5 +89,5 @@ function updatePictures() {
 }
 
 function add_hero(hero_id, pic_src) {
-	$("#hero_container").append("<img class='removeable' src='"+pic_src+"' data-id='"+hero_id+"'/>");
+	$(".selected_hero_container").append("<img class='removable' src='"+pic_src+"' data-id='"+hero_id+"'/>");
 }

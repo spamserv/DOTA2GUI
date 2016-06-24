@@ -45,31 +45,33 @@
 <input type="text" id="given_chars" disabled hidden>
 
 
-<div class="container">
+<div class="container-fluid">
 
 	<div id="title">
      	DOTA PREDICTIONER
     </div>
 
-	<div class="row" style="text-align: center;">
-		<div class="col-md-1"></div>
-		<div class="col-md-10">
+	<div class="row default" style="text-align: center;">
+		<div class="col-md-2">
+			<div class="selected_hero_container">
+		
+			</div>
+		</div>
+		<div class="col-md-8" id="hero_holder">
 			<?php 
 				$heroes = json_decode(file_get_contents("static/data/heroes.json"));
 				foreach($heroes as $hero)
-				{
+				{	
+					echo '<div class="hero_container">';
 				    echo '<img src="static/img/heroes/'.$hero->name.'_lg.png" data-name="'.strtolower($hero->localized_name).'" data-id="'.$hero->id.'" class="hero_pic">';
+				    echo '<img data-id="'.$hero->id.'" class="hero_placeholder">';
+				    echo '</div>';
+
 				}  
 
 			?>
 		</div>
-		<div class="col-md-1"></div>
-	</div>
-
-	
-
-	<div id="hero_container">
-		
+		<div class="col-md-2"></div>
 	</div>
 
 	<button type="button" class="btn btn-default" id="btn-predict">Default</button>
