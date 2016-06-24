@@ -16,6 +16,18 @@ $(document).keydown(function(e) {
 
 });
 
+$("#btn-predict").on("click", function(){
+	var heroes = JSON.stringify(["1","9","5","49","14","16","17","18","21","30","true"]);
+	$.ajax({
+		url: "https://dota-ruap.herokuapp.com/predict", 
+		type: "POST",
+		data: heroes,
+		success: function(result){
+    	}
+	});
+
+});
+
 function updatePictures() {
 	var value = $("#given_chars").val();
 	var value_length = value.length;

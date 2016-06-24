@@ -7,6 +7,7 @@
 	<meta charset="utf-8">
 	<title>Dota2 Predictioner</title>
 
+	<link rel="stylesheet" type="text/css" href="static/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="static/css/index.css">
 </head>
 <body>
@@ -19,6 +20,8 @@
 <img src="static/img/a.png" data-name="bb" height="100" width="100" class="hero_pic">
 <img src="static/img/a.png" data-name="bba" height="100" width="100" class="hero_pic">
 <img src="static/img/a.png" data-name="ba" height="100" width="100" class="hero_pic">
+
+<button type="button" class="btn btn-default" id="btn-predict">Default</button>
 
 
 
