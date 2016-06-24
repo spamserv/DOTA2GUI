@@ -2,6 +2,7 @@
 	height: 75px; 
 	width: 75px; 
 	cursor: pointer;
+	padding: 1px;
 }
 
 .positive {
@@ -15,8 +16,6 @@
 
 .negative {
 	cursor: not-allowed;
-	width: 65px;
-	height: 65px;
 	-webkit-filter: grayscale(100%); /* Chrome, Safari, Opera */
 	filter: grayscale(100%);
 }
