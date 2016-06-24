@@ -5,20 +5,9 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>EUFORIČNA DOTA</title>
+	<title>Dota2 Predictioner</title>
 
-	<style type="text/css">
-		.positive {
-			border: 5px solid red;
-		}
-
-		.negative {
-			width: 90px;
-			height: 90px;
-			-webkit-filter: grayscale(100%); /* Chrome, Safari, Opera */
-    		filter: grayscale(100%);
-		}
-	</style>
+	<link rel="stylesheet" type="text/css" href="static/css/index.css">
 </head>
 <body>
 
@@ -31,7 +20,10 @@
 <img src="static/img/a.png" data-name="bba" height="100" width="100" class="hero_pic">
 <img src="static/img/a.png" data-name="ba" height="100" width="100" class="hero_pic">
 
+
+
 <script type="text/javascript" src="static/js/jquery.min.js"></script>
+<script type="text/javascript" src="static/js/bootstrap.min.js"></script>
 <script type="text/javascript">
 
 $(document).ready(function() {
@@ -42,7 +34,7 @@ $(document).keydown(function(e) {
 	console.log(e.keyCode);
 	if(e.keyCode == 8) {
 		$("#given_chars").val($("#given_chars").val().slice(0,-1));
-		return false
+		return false;
 	}
 
 	if(e.charCode != 32)
