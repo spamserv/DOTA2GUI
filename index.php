@@ -53,7 +53,7 @@
 
 	<div class="row default" style="text-align: center;">
 		<div class="col-md-2">
-			<div class="selected_hero_container" id="selected_heroes_1"></div>
+			<div class="selected_hero_container" id="selected_heroes_1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
 		</div>
 		<div class="col-md-8" id="hero_holder">
 			<?php 
@@ -61,14 +61,14 @@
 				foreach($heroes as $hero)
 				{	
 					echo '<div class="hero_container">';
-				    echo '<img src="static/img/heroes/'.$hero->name.'_lg.png" data-name="'.$hero->localized_name.'" data-id="'.$hero->id.'" class="hero_pic">';
+				    echo '<img src="static/img/heroes/'.$hero->name.'_lg.png" data-name="'.$hero->localized_name.'" data-id="'.$hero->id.'" data-src="static/img/heroes/'.$hero->name.'_lg.png" class="hero_pic" draggable ondragstart="drag(event)">';
 				    echo '<img data-id="'.$hero->id.'" class="hero_placeholder">';
 				    echo '</div>';
 				}  
 			?>
 		</div>
 		<div class="col-md-2">
-			<div class="selected_hero_container" id="selected_heroes_2"></div>
+			<div class="selected_hero_container" id="selected_heroes_2" ondrop="drop1(event)" ondragover="allowDrop(event)"></div>
 		</div>
 	</div>
 

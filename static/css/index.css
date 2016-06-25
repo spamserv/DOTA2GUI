@@ -98,3 +98,8 @@ body {
 	background-image: url('../img/old-wall-pattern.png');
 	background-repeat: repeat;
 }
+
+.selected_hero_container {
+	height: 750px;
+	border: 1px solid white;
+}

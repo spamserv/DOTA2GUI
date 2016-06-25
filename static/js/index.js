@@ -1,5 +1,8 @@
+var team_1 = [];
+var team_2 = [];
+var selected_heroes = [];
+
 $(document).ready(function() {
-	var selected_heroes = [];
 
 	$("#given_chars").val("");
 
@@ -10,10 +13,7 @@ $(document).ready(function() {
 			var selected_src = $(this).attr("src");
 			var selected_name = $(this).attr("data-name");
 
-			if(selected_heroes.indexOf(selected_id) == -1 && selected_heroes.length < 10) {
-				selected_heroes.push(selected_id);
-				add_hero(selected_id, selected_src, selected_name, selected_heroes);
-			}
+			addHeroToList(selected_id, selected_src, selected_name);
 		}
 	
 	});
@@ -24,6 +24,15 @@ $(document).ready(function() {
 		var index = selected_heroes.indexOf(hero_id);
 		if (index > -1)
 		    selected_heroes.splice(index, 1);
+
+		var index = team_1.indexOf(hero_id);
+		if (index > -1)
+		    team_1.splice(index, 1);
+
+		var index = team_2.indexOf(hero_id);
+		if (index > -1)
+		    team_2.splice(index, 1);
+
 		$(".removable[data-id='"+hero_id+"']").parent().remove();
 	});
 
@@ -44,6 +53,7 @@ $(document).ready(function() {
 		}
 
 	});
+
 });
 
 $(document).keydown(function(e) {
@@ -89,16 +99,74 @@ function updatePictures() {
 	});
 }
 
-function add_hero(hero_id, pic_src, hero_name, selected_heroes) {
+function add_hero(hero_id, pic_src, hero_name, team_id) {
 
-	console.log(selected_heroes.length);
+	var append_div = "<div class='hero_select' draggable='false'><img class='removable' src='"+pic_src+"' data-id='"+hero_id+"'/><div class='hero_name'><p class='hero_name_text'>"+hero_name+"</p></div></div>";
 
-	var append_div = "<div class='hero_select'><img class='removable' src='"+pic_src+"' data-id='"+hero_id+"'/><div class='hero_name'><p class='hero_name_text'>"+hero_name+"</p></div></div>";
-
-	if(selected_heroes.length <= 5) {
+	if(team_id == 1) {
 		$("#selected_heroes_1").append(append_div);
 	} else {
 		$("#selected_heroes_2").append(append_div);
+	}
+
+}
+
+function drag(ev) {
+    ev.dataTransfer.setData("data-id", ev.target.dataset.id);
+    ev.dataTransfer.setData("data-name", ev.target.dataset.name);
+    ev.dataTransfer.setData("data-src", ev.target.dataset.src);
+} 
+
+function allowDrop(event) {
+	event.preventDefault();
+}
+
+function drop(ev) {
+    ev.preventDefault();
+    addHeroToList(ev.dataTransfer.getData("data-id"), ev.dataTransfer.getData("data-src"), ev.dataTransfer.getData("data-name"), 1);
+}
+
+function drop1(ev) {
+    ev.preventDefault();
+    addHeroToList(ev.dataTransfer.getData("data-id"), ev.dataTransfer.getData("data-src"), ev.dataTransfer.getData("data-name"), 2);
+}
+
+function addHeroToList(hero_id, pic_src, hero_name, team) {
+
+	var push_to_team = team;
+	var check_team = [];
+	if(team == 1)
+		check_team = team_1;
+	else if(team == 2)
+		check_team = team_2;
+
+	if(team != undefined) {
+		if(check_team.length >= 5) {
+			return false;
+		}
+	}
+
+	if(team == undefined) {
+		if(team_1.length < 5) {
+			if(team_1.indexOf(hero_id) != -1 || selected_heroes.indexOf(hero_id) != -1)
+				return false;
+			team_1.push(hero_id);
+			push_to_team = 1;
+		} else if(team_2.length < 5) {
+			if(team_2.indexOf(hero_id) != -1 || selected_heroes.indexOf(hero_id) != -1)
+				return false;
+			team_2.push(hero_id);
+			push_to_team = 2;
+		}
+	} else {
+		if(check_team.indexOf(hero_id) != -1 || selected_heroes.indexOf(hero_id) != -1)
+			return false;
+		check_team.push(hero_id);
+	}
+
+	if(push_to_team != undefined) {
+		selected_heroes.push(hero_id);
+		add_hero(hero_id, pic_src, hero_name, push_to_team);
 	}
 
 	
