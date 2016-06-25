@@ -28,7 +28,7 @@ header('Expires: '.gmdate(DATE_RFC1123,time()+60*60*24*365));
 		<div class="col-md-2">
 			<div class="selected_hero_container" id="selected_heroes_1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
 		</div>
-		<div class="col-md-8" id="hero_holder">
+		<div class="col-md-8" id="hero_holder" style="margin:0; padding:0;">
 			<?php 
 
 				$ch = curl_init("https://dota-ruap.herokuapp.com/heroes");
@@ -59,8 +59,10 @@ header('Expires: '.gmdate(DATE_RFC1123,time()+60*60*24*365));
 		</div>
 	</div>
 
-	<button type="button" class="btn btn-default" id="btn-predict">Predict</button>
-	
+	<center>
+		<button type="button" class="btn btn-default" id="btn-predict" disabled>Predict</button>
+	</center>
+	<footer style="padding-top:20px;"></footer>
 </div>
 
 <div id="divLoading" class="" style="z-index:9999; display:none;">

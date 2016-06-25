@@ -123,9 +123,10 @@ body {
 	background: 0 0;
 	transition: all .3s ease-in-out;
 	text-transform: uppercase;
+	width:200px;
 }
 
-#btn-predict:hover {
+#btn-predict:hover,focus,active {
 	border-color: #fff;
 	color: #fff;
 	transition: all .4s ease-in-out;

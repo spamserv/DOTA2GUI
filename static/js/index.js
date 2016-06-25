@@ -34,6 +34,7 @@ $(document).ready(function() {
 		    team_2.splice(index, 1);
 
 		$(".removable[data-id='"+hero_id+"']").parent().remove();
+		if(selected_heroes.length != 10) $("#btn-predict").prop("disabled",true);
 	});
 
 	$("#btn-predict").on("click", function(){
@@ -128,7 +129,6 @@ function allowDrop(event) {
 
 function drop(ev) {
     ev.preventDefault();
-    console.log(ev.dataTransfer.getData("data-draggable"));
     if(ev.dataTransfer.getData("data-draggable") == "true")
     	addHeroToList(ev.dataTransfer.getData("data-id"), ev.dataTransfer.getData("data-src"), ev.dataTransfer.getData("data-name"), 1);
 }
@@ -174,6 +174,11 @@ function addHeroToList(hero_id, pic_src, hero_name, team) {
 
 	if(push_to_team != undefined) {
 		selected_heroes.push(hero_id);
+		
+		if(selected_heroes.length == 10) {
+			$("#btn-predict").prop("disabled",false);
+		}
+
 		add_hero(hero_id, pic_src, hero_name, push_to_team);
 	}
 
