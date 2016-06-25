@@ -88,9 +88,11 @@ function updatePictures() {
 			if(value == hero_name.substring(0, value_length)) {
 				$(this).removeClass("negative");
 				$(this).addClass("positive");
+				$(this).attr("draggable", "true")
 			} else {
 				$(this).removeClass("positive");
 				$(this).addClass("negative");
+				$(this).attr("draggable", "false")
 			}
 		} else {
 			$(this).removeClass("positive");
@@ -112,9 +114,11 @@ function add_hero(hero_id, pic_src, hero_name, team_id) {
 }
 
 function drag(ev) {
+	console.log(ev.target.draggable);
     ev.dataTransfer.setData("data-id", ev.target.dataset.id);
     ev.dataTransfer.setData("data-name", ev.target.dataset.name);
     ev.dataTransfer.setData("data-src", ev.target.dataset.src);
+    ev.dataTransfer.setData("data-draggable", ev.target.draggable);
 } 
 
 function allowDrop(event) {
@@ -123,12 +127,15 @@ function allowDrop(event) {
 
 function drop(ev) {
     ev.preventDefault();
-    addHeroToList(ev.dataTransfer.getData("data-id"), ev.dataTransfer.getData("data-src"), ev.dataTransfer.getData("data-name"), 1);
+    console.log(ev.dataTransfer.getData("data-draggable"));
+    if(ev.dataTransfer.getData("data-draggable") == "true")
+    	addHeroToList(ev.dataTransfer.getData("data-id"), ev.dataTransfer.getData("data-src"), ev.dataTransfer.getData("data-name"), 1);
 }
 
 function drop1(ev) {
     ev.preventDefault();
-    addHeroToList(ev.dataTransfer.getData("data-id"), ev.dataTransfer.getData("data-src"), ev.dataTransfer.getData("data-name"), 2);
+    if(ev.dataTransfer.getData("data-draggable") == "true")
+    	addHeroToList(ev.dataTransfer.getData("data-id"), ev.dataTransfer.getData("data-src"), ev.dataTransfer.getData("data-name"), 2);
 }
 
 function addHeroToList(hero_id, pic_src, hero_name, team) {
