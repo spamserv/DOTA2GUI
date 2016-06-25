@@ -100,6 +100,7 @@ function updatePictures() {
 		} else {
 			$(this).removeClass("positive");
 			$(this).removeClass("negative");
+			$(this).attr("draggable", "true")
 		}
 	});
 }
