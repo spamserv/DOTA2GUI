@@ -72,7 +72,7 @@
 		</div>
 	</div>
 
-	<button type="button" class="btn btn-default" id="btn-predict">Default</button>
+	<button type="button" class="btn btn-default" id="btn-predict">Predict</button>
 	
 </div>
 
