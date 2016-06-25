@@ -63,6 +63,14 @@
 	box-shadow:         0px 0px 30px 1px #47D1FF;
 }
 
+@-moz-document url-prefix() {
+    .hero_container:hover > .hero_pic {
+        -ms-transform: translate(-50px, -17px); /* IE 9 */
+   		-webkit-transform: translate(-50px, -17px); /* Safari */
+    	transform: translate(-50px, -17px);
+    }
+}
+
 .hero_select {
 	width:173px;
 	margin: 6px;
