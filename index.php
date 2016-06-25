@@ -63,7 +63,7 @@
 				foreach($heroes as $hero)
 				{	
 					echo '<div class="hero_container">';
-				    echo '<img src="static/img/heroes/'.$hero->name.'_lg.png" data-name="'.strtolower($hero->localized_name).'" data-id="'.$hero->id.'" class="hero_pic">';
+				    echo '<img src="static/img/heroes/'.$hero->name.'_lg.png" data-name="'.$hero->localized_name.'" data-id="'.$hero->id.'" class="hero_pic">';
 				    echo '<img data-id="'.$hero->id.'" class="hero_placeholder">';
 				    echo '</div>';
 

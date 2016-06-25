@@ -8,10 +8,11 @@ $(document).ready(function() {
 		if(!$(this).hasClass("negative")) {
 			var selected_id = $(this).attr("data-id");
 			var selected_src = $(this).attr("src");
+			var selected_name = $(this).attr("data-name");
 
 			if(selected_heroes.indexOf(selected_id) == -1 && selected_heroes.length < 10) {
 				selected_heroes.push(selected_id);
-				add_hero(selected_id, selected_src);
+				add_hero(selected_id, selected_src, selected_name);
 			}
 		}
 	
@@ -23,7 +24,7 @@ $(document).ready(function() {
 		var index = selected_heroes.indexOf(hero_id);
 		if (index > -1)
 		    selected_heroes.splice(index, 1);
-		$(".removable[data-id='"+hero_id+"']").remove();
+		$(".removable[data-id='"+hero_id+"']").parent().remove();
 	});
 
 	$("#btn-predict").on("click", function(){
@@ -73,7 +74,7 @@ function updatePictures() {
 
 	$(".hero_pic").each(function() {
 		if(value_length > 0) {
-			hero_name = $(this).attr("data-name");
+			hero_name = $(this).attr("data-name").toLowerCase();
 			if(value == hero_name.substring(0, value_length)) {
 				$(this).removeClass("negative");
 				$(this).addClass("positive");
@@ -88,6 +89,6 @@ function updatePictures() {
 	});
 }
 
-function add_hero(hero_id, pic_src) {
-	$(".selected_hero_container").append("<div class='hero_select'><img class='removable' src='"+pic_src+"' data-id='"+hero_id+"'/><div class='hero_name'><p class='hero_name_text'>Keeper of the light</p></div></div>");
+function add_hero(hero_id, pic_src, hero_name) {
+	$(".selected_hero_container").append("<div class='hero_select'><img class='removable' src='"+pic_src+"' data-id='"+hero_id+"'/><div class='hero_name'><p class='hero_name_text'>"+hero_name+"</p></div></div>");
 }
