@@ -1,6 +1,3 @@
-<?php 
-
-?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -57,14 +54,28 @@
 		</div>
 		<div class="col-md-8" id="hero_holder">
 			<?php 
-				$heroes = json_decode(file_get_contents("static/data/heroes.json"));
-				foreach($heroes as $hero)
-				{	
+
+				$ch = curl_init("https://dota-ruap.herokuapp.com/heroes");
+				curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "GET");  
+				curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);                                                                                                                                     
+				curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); 
+				  
+				curl_setopt($ch, CURLOPT_HTTPHEADER, array(                                                                          
+				    'Content-Type: application/json',
+				    'Accept: application/json'                                                                     
+				));  
+
+				$data = curl_exec($ch);
+
+				$heroes = json_decode($data);
+
+				foreach ($heroes as $hero) {
 					echo '<div class="hero_container">';
-				    echo '<img src="static/img/heroes/'.$hero->name.'_lg.png" data-name="'.$hero->localized_name.'" data-id="'.$hero->id.'" data-src="static/img/heroes/'.$hero->name.'_lg.png" class="hero_pic" draggable ondragstart="drag(event)">';
+				    echo '<img src="static/img/heroes/'.$hero->name.'_lg.png" data-name="'.$hero->localizedName.'" data-id="'.$hero->heroId.'" data-src="static/img/heroes/'.$hero->name.'_lg.png" class="hero_pic" draggable ondragstart="drag(event)">';
 				    echo '<img data-id="'.$hero->id.'" class="hero_placeholder">';
 				    echo '</div>';
-				}  
+				}
+
 			?>
 		</div>
 		<div class="col-md-2">
