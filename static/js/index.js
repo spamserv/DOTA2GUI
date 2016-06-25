@@ -37,9 +37,10 @@ $(document).ready(function() {
 	});
 
 	$("#btn-predict").on("click", function(){
-		
+
 		var heroes = [];
 		if(selected_heroes.length == 10) {
+			startLoader();
 			var heroes = selected_heroes.slice();
 				heroes.push("true");
 			$.ajax({
@@ -48,6 +49,7 @@ $(document).ready(function() {
 				data: JSON.stringify(heroes),
 				success: function(result){
 					console.log(result);
+					stopLoader();
 		    	}
 			});
 		}
@@ -114,7 +116,6 @@ function add_hero(hero_id, pic_src, hero_name, team_id) {
 }
 
 function drag(ev) {
-	console.log(ev.target.draggable);
     ev.dataTransfer.setData("data-id", ev.target.dataset.id);
     ev.dataTransfer.setData("data-name", ev.target.dataset.name);
     ev.dataTransfer.setData("data-src", ev.target.dataset.src);
@@ -177,4 +178,12 @@ function addHeroToList(hero_id, pic_src, hero_name, team) {
 	}
 
 	
+}
+
+function startLoader() {
+    $("#divLoading").addClass('show');
+}
+
+function stopLoader() {
+    $("#divLoading").removeClass('show');
 }

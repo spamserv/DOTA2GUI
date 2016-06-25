@@ -1,3 +1,7 @@
+<?php 
+header('Cache-control: max-age='.(60*60*24*365));
+header('Expires: '.gmdate(DATE_RFC1123,time()+60*60*24*365));
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,34 +10,6 @@
 
 	<link rel="stylesheet" type="text/css" href="static/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="static/css/index.css">
-
-	<style type="text/css">
-
-	#given_chars {
-		position: fixed;
-		z-index: 1;
-		right: 0;
-		margin: 20px;
-		height: 40px;
-		width: 200px;
-		background-color: whitesmoke;
-		margin-top: 15px;
-		border: solid 3px #b8b8b8;
-		font-size: 20px;
-		padding: 5px;
-	}
-
-	#title {
-	    height: 55px;
-	    margin-bottom: 25px;
-	    margin-left: -15px;
-	    margin-right: -15px;
-	    text-align: center;
-	    font-size: 30px;
-	    padding-top: 20px;
-	    padding-bottom: 85px;
-	  }
-	</style>
 
 </head>
 <body>
@@ -87,7 +63,14 @@
 	
 </div>
 
-
+<div id="divLoading" class="" style="z-index:9999; display:none;">
+    <div class="loader-content">
+        <img src="static/img/loader.svg" width="100"><br>
+        <div id="divLoading-text">
+        	PREDICTING..
+        </div>
+    </div>
+</div>
 
 <script type="text/javascript" src="static/js/jquery.min.js"></script>
 <script type="text/javascript" src="static/js/bootstrap.min.js"></script>
