@@ -53,9 +53,7 @@
 
 	<div class="row default" style="text-align: center;">
 		<div class="col-md-2">
-			<div class="selected_hero_container">
-		
-			</div>
+			<div class="selected_hero_container" id="selected_heroes_1"></div>
 		</div>
 		<div class="col-md-8" id="hero_holder">
 			<?php 
@@ -66,12 +64,12 @@
 				    echo '<img src="static/img/heroes/'.$hero->name.'_lg.png" data-name="'.$hero->localized_name.'" data-id="'.$hero->id.'" class="hero_pic">';
 				    echo '<img data-id="'.$hero->id.'" class="hero_placeholder">';
 				    echo '</div>';
-
 				}  
-
 			?>
 		</div>
-		<div class="col-md-2"></div>
+		<div class="col-md-2">
+			<div class="selected_hero_container" id="selected_heroes_2"></div>
+		</div>
 	</div>
 
 	<button type="button" class="btn btn-default" id="btn-predict">Default</button>

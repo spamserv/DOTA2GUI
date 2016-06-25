@@ -12,7 +12,7 @@ $(document).ready(function() {
 
 			if(selected_heroes.indexOf(selected_id) == -1 && selected_heroes.length < 10) {
 				selected_heroes.push(selected_id);
-				add_hero(selected_id, selected_src, selected_name);
+				add_hero(selected_id, selected_src, selected_name, selected_heroes);
 			}
 		}
 	
@@ -89,6 +89,17 @@ function updatePictures() {
 	});
 }
 
-function add_hero(hero_id, pic_src, hero_name) {
-	$(".selected_hero_container").append("<div class='hero_select'><img class='removable' src='"+pic_src+"' data-id='"+hero_id+"'/><div class='hero_name'><p class='hero_name_text'>"+hero_name+"</p></div></div>");
+function add_hero(hero_id, pic_src, hero_name, selected_heroes) {
+
+	console.log(selected_heroes.length);
+
+	var append_div = "<div class='hero_select'><img class='removable' src='"+pic_src+"' data-id='"+hero_id+"'/><div class='hero_name'><p class='hero_name_text'>"+hero_name+"</p></div></div>";
+
+	if(selected_heroes.length <= 5) {
+		$("#selected_heroes_1").append(append_div);
+	} else {
+		$("#selected_heroes_2").append(append_div);
+	}
+
+	
 }
