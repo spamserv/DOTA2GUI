@@ -10,6 +10,7 @@ header('Expires: '.gmdate(DATE_RFC1123,time()+60*60*24*365));
 
 	<link rel="stylesheet" type="text/css" href="static/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="static/css/index.css">
+	<link rel="stylesheet" type="text/css" href="static/css/sweetalert2.min.css">
 
 </head>
 <body>
@@ -21,7 +22,7 @@ header('Expires: '.gmdate(DATE_RFC1123,time()+60*60*24*365));
 <div class="container-fluid">
 
 	<div id="title">
-     	DOTA PREDICTIONER
+     	DOTA PREDICTIONER v0.2-beta
     </div>
 
 	<div class="row default" style="text-align: center;">
@@ -76,6 +77,7 @@ header('Expires: '.gmdate(DATE_RFC1123,time()+60*60*24*365));
 
 <script type="text/javascript" src="static/js/jquery.min.js"></script>
 <script type="text/javascript" src="static/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="static/js/sweetalert2.min.js"></script>
 <script type="text/javascript" src="static/js/index.js"></script>
 
 </body>

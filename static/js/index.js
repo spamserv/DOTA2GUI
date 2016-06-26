@@ -49,7 +49,19 @@ $(document).ready(function() {
 				type: "POST",
 				data: JSON.stringify(heroes),
 				success: function(result){
-					console.log(result);
+					if(result > 0.5) {
+						swal(
+						  'We predict you\'ll win!',
+						  'Chance of winning: '+(result*100).toFixed(2)+'%',
+						  'success'
+						);
+					} else {
+						swal(
+						  'We predict you\'ll lose!',
+						  'Chance of winning: '+(result*100).toFixed(2)+'%',
+						  'error'
+						);
+					}
 					stopLoader();
 		    	}
 			});
